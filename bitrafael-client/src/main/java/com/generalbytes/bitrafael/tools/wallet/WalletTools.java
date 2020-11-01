@@ -26,7 +26,7 @@ import com.generalbytes.bitrafael.tools.wallet.btc.WalletToolsBTC;
 import com.generalbytes.bitrafael.tools.wallet.dash.WalletToolsDASH;
 import com.generalbytes.bitrafael.tools.wallet.eth.WalletToolsETH;
 import com.generalbytes.bitrafael.tools.wallet.ltc.WalletToolsLTC;
-import com.generalbytes.bitrafael.tools.wallet.ltc.WalletToolsSUM;
+import com.generalbytes.bitrafael.tools.wallet.sum.WalletToolsSUM;
 import com.generalbytes.bitrafael.tools.wallet.xmr.Account;
 import com.generalbytes.bitrafael.tools.wallet.xmr.WalletToolsXMR;
 
