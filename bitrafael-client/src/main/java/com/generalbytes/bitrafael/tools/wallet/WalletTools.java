@@ -26,6 +26,7 @@ import com.generalbytes.bitrafael.tools.wallet.btc.WalletToolsBTC;
 import com.generalbytes.bitrafael.tools.wallet.dash.WalletToolsDASH;
 import com.generalbytes.bitrafael.tools.wallet.eth.WalletToolsETH;
 import com.generalbytes.bitrafael.tools.wallet.ltc.WalletToolsLTC;
+import com.generalbytes.bitrafael.tools.wallet.ltc.WalletToolsSUM;
 import com.generalbytes.bitrafael.tools.wallet.xmr.Account;
 import com.generalbytes.bitrafael.tools.wallet.xmr.WalletToolsXMR;
 
@@ -45,6 +46,9 @@ public class WalletTools implements IWalletTools {
 
         tools.put(IClient.LTC,new WalletToolsLTC());
         classificators.put(IClient.LTC,new WalletToolsLTC());
+        
+        tools.put(IClient.SUM,new WalletToolsSUM());
+        classificators.put(IClient.SUM,new WalletToolsSUM());
 
         tools.put(IClient.DASH,new WalletToolsDASH());
         classificators.put(IClient.DASH,new WalletToolsDASH());
@@ -143,6 +147,8 @@ public class WalletTools implements IWalletTools {
             result = classificators.get(IClient.BTC).classify(input);
         }else if (IClient.LTC.equalsIgnoreCase(cryptoCurrencyHint)) {
             result = classificators.get(IClient.LTC).classify(input);
+        }else if (IClient.SUM.equalsIgnoreCase(cryptoCurrencyHint)) {
+            result = classificators.get(IClient.SUM).classify(input);    
         }else if (IClient.DASH.equalsIgnoreCase(cryptoCurrencyHint)) {
             result = classificators.get(IClient.DASH).classify(input);
         }else if (IClient.XMR.equalsIgnoreCase(cryptoCurrencyHint)) {
@@ -170,6 +176,8 @@ public class WalletTools implements IWalletTools {
             return classificators.get(IClient.BTC).classify(input);
         }else if (input.toLowerCase().startsWith("litecoin:")) {
             return classificators.get(IClient.LTC).classify(input);
+        }else if (input.toLowerCase().startsWith("sumcoin:")) {
+            return classificators.get(IClient.SUM).classify(input);    
         }else if (input.toLowerCase().startsWith("dash:")) {
             return classificators.get(IClient.DASH).classify(input);
         }else if (input.toLowerCase().startsWith("xmr:") || input.toLowerCase().startsWith("monero:")) {
@@ -227,6 +235,7 @@ public class WalletTools implements IWalletTools {
     public Set<String> supportedCryptoCurrencies() {
         final HashSet<String> result = new HashSet<String>();
         result.add(IClient.LTC);
+        result.add(IClient.SUM);
         result.add(IClient.BTC);
         result.add(IClient.DASH);
         result.add(IClient.XMR);
@@ -241,6 +250,8 @@ public class WalletTools implements IWalletTools {
             return COIN_TYPE_BITCOIN;
         }else if (IClient.LTC.equalsIgnoreCase(cryptoCurrency)) {
             return COIN_TYPE_LITECOIN;
+        }else if (IClient.SUM.equalsIgnoreCase(cryptoCurrency)) {
+            return COIN_TYPE_SUMCOIN;    
         }else if (IClient.ETH.equalsIgnoreCase(cryptoCurrency)) {
             return COIN_TYPE_ETHEREUM;
         }else if (IClient.ETC.equalsIgnoreCase(cryptoCurrency)) {
